@@ -159,10 +159,10 @@ export default function SocialProof() {
                     {/* Text with transparent background */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10 w-full max-w-3xl px-4">
                         <div className="bg-pink-100/40 backdrop-blur-sm rounded-[100px] px-8 py-12 md:px-12 md:py-16">
-                            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'cursive' }}>
+                            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'Outfit, sans-serif' }}>
                                 Únete a los cientos de usuarios
                             </h2>
-                            <p className="text-lg md:text-xl text-gray-600">
+                            <p className="text-lg md:text-xl text-gray-700 font-medium" style={{ fontFamily: 'Outfit, sans-serif' }}>
                                 que hacen crecer su negocio con Nodo.
                             </p>
                         </div>

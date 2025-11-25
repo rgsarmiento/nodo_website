@@ -3,7 +3,6 @@ import {
     Truck,
     Hammer,
     Shirt,
-    Car,
     UtensilsCrossed,
     Milk,
     ShoppingBasket,
@@ -36,10 +35,10 @@ const businessTypes = [
     { name: "Distribuidora", icon: Truck },
     { name: "Ferretería", icon: Hammer },
     { name: "Boutique", icon: Shirt },
-    { name: "Autoservicio", icon: Car },
-    { name: "Carnicería", icon: UtensilsCrossed }, // Used generic food icon
+    { name: "Supermercado", icon: ShoppingBasket },
+    { name: "Carnicería", icon: UtensilsCrossed },
     { name: "Cremería", icon: Milk },
-    { name: "Minisuper", icon: ShoppingBasket },
+    { name: "Minisuper", icon: Store },
     { name: "Zapatería", icon: Footprints },
     { name: "Tortillería", icon: Wheat },
     { name: "Dulcería", icon: Candy },
@@ -67,11 +66,11 @@ const businessTypes = [
 ];
 ---
 
-<section class="py-20 bg-white">
+<section class="py-20" style="background-color: #ECE7F5;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Ideal para cualquier giro de negocio
+                Ideal para cualquier tipo de negocio
             </h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                 Nodo se adapta a las necesidades específicas de tu industria,
@@ -79,14 +78,23 @@ const businessTypes = [
             </p>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {
                 businessTypes.map((item) => (
-                    <div class="flex flex-col items-center justify-center p-6 rounded-xl border border-gray-100 hover:border-nodo-purple hover:shadow-lg transition-all group bg-gray-50 hover:bg-white cursor-default">
-                        <div class="text-nodo-purple mb-3 group-hover:scale-110 transition-transform">
-                            <item.icon size={32} stroke-width={1.5} />
+                    <div class="flex flex-col items-center justify-center p-6 rounded-2xl bg-white border border-gray-100 hover:border-nodo-purple hover:shadow-xl transition-all duration-300 group cursor-default">
+                        <div class="relative mb-4">
+                            {/* Cuadro redondeado con fondo morado claro */}
+                            <div class="w-20 h-20 bg-purple-50 rounded-2xl flex items-center justify-center border-2 border-nodo-purple group-hover:shadow-lg group-hover:scale-110 transition-all duration-300">
+                                <item.icon
+                                    size={36}
+                                    strokeWidth={2}
+                                    className="text-nodo-purple"
+                                />
+                            </div>
+                            {/* Punto decorativo */}
+                            <div class="absolute -top-1 -right-1 w-4 h-4 bg-cyan-400 rounded-full border-2 border-white" />
                         </div>
-                        <span class="text-gray-700 font-medium text-center text-sm">
+                        <span class="text-gray-800 font-semibold text-center text-sm leading-tight">
                             {item.name}
                         </span>
                     </div>

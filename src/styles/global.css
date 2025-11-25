@@ -1,22 +1,29 @@
 @import "tailwindcss";
 
 @theme {
-  --color-nodo-purple: #9C27B0;
-  --color-nodo-grey: #4A4A4A;
+  --color-nodo-purple: #6A1B9A;
   --color-nodo-dark: #1a1a1a;
-  --font-sans: 'Outfit', sans-serif;
-  
-  --animate-fade-in: fade-in 0.5s ease-out forwards;
-  --animate-slide-up: slide-up 0.5s ease-out forwards;
+  --color-nodo-grey: #f3f4f6;
+  --color-nodo-text: #4A4A4A;
 
-  @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  --font-sans: 'Outfit', sans-serif;
+
+  --animate-fade-in: fadeIn 0.5s ease-out forwards;
+  --animate-fade-in-up: fadeInUp 0.5s ease-out forwards;
+  --animate-slide-up: slideUp 0.5s ease-out forwards;
+  --animate-bounce-slow: bounce 3s infinite;
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
   }
-  
-  @keyframes slide-up {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideUp {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(0); }
   }
 }
 
@@ -26,6 +33,6 @@
         scroll-behavior: smooth;
     }
     body {
-        @apply bg-slate-50 text-nodo-grey;
+        @apply bg-slate-50 text-gray-800;
     }
 }

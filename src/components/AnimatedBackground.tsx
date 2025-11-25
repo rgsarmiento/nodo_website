@@ -30,7 +30,7 @@ export default function AnimatedBackground() {
 
         // Create particles
         const particles: Particle[] = [];
-        const particleCount = 120; // More particles for intensity
+        const particleCount = 80; // Reduced for less intensity
 
         for (let i = 0; i < particleCount; i++) {
             const angle = Math.random() * Math.PI * 2;
