@@ -1,0 +1,109 @@
+---
+interface Props {
+    title?: string;
+    description?: string;
+}
+
+const {
+    title = "Nodo - Software de Facturación Electrónica y POS | Colombia",
+    description = "Software de facturación electrónica DIAN, punto de venta (POS) e inventarios para Colombia. Solución completa para gestión empresarial. ¡Sin internet y sin límites!",
+} = Astro.props;
+
+const siteUrl = "https://nodo.com.co";
+const imageUrl = `${siteUrl}/images/logo-nodo.png`;
+---
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta
+    name="keywords"
+    content="facturación electrónica, software POS, punto de venta, facturación DIAN, software contable Colombia, inventarios, gestión empresarial, facturación sin internet, software restaurantes, MeserosPro, software facturación Colombia, POS Colombia"
+/>
+<meta name="author" content="Desarrolladores Colombia SAS" />
+<meta name="robots" content="index, follow" />
+<meta name="language" content="Spanish" />
+<meta name="revisit-after" content="7 days" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={siteUrl} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:site_name" content="Nodo" />
+<meta property="og:locale" content="es_CO" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={siteUrl} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={imageUrl} />
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<!-- Structured Data (JSON-LD) for Software -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Nodo",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Windows",
+        "offers": {
+            "@type": "Offer",
+            "price": "1300000",
+            "priceCurrency": "COP"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "150"
+        },
+        "description": "Software de facturación electrónica DIAN, punto de venta (POS) e inventarios para Colombia",
+        "image": "/images/logo-nodo.png",
+        "url": "https://nodo.com.co",
+        "provider": {
+            "@type": "Organization",
+            "name": "Desarrolladores Colombia SAS",
+            "url": "https://nodo.com.co",
+            "logo": "/images/logo-nodo.png",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+57-318-7239498",
+                "contactType": "Sales",
+                "areaServed": "CO",
+                "availableLanguage": "Spanish"
+            }
+        },
+        "featureList": [
+            "Facturación Electrónica DIAN",
+            "Punto de Venta (POS)",
+            "Gestión de Inventarios",
+            "Módulos Administrativos",
+            "Funciona sin Internet",
+            "Soporte Técnico Incluido"
+        ]
+    }
+</script>
+
+<!-- Local Business Schema -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Nodo - Software de Facturación",
+        "image": "/images/logo-nodo.png",
+        "url": "https://nodo.com.co",
+        "telephone": "+57-318-7239498",
+        "priceRange": "$$",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "CO"
+        }
+    }
+</script>

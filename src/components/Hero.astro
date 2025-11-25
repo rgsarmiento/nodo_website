@@ -1,0 +1,159 @@
+---
+import AnimatedBackground from "./AnimatedBackground";
+---
+
+<section
+  class="relative bg-gradient-to-br from-nodo-purple via-purple-800 to-nodo-grey overflow-hidden pt-20 lg:pt-28 pb-16"
+>
+  <!-- Animated Background -->
+  <AnimatedBackground client:load />
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="text-center lg:text-left animate-fade-in">
+        <h1
+          class="text-4xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight"
+        >
+          El Software de <span class="text-cyan-300"
+            >Facturación POS y Electrónica</span
+          > más fácil de Colombia.
+        </h1>
+        <p class="text-lg text-purple-100 mb-8 max-w-2xl mx-auto lg:mx-0">
+          Facturación electrónica DIAN, inventarios, POS y gestión total. Todo
+          lo que necesitas para crecer, en una sola plataforma.
+          <span class="block mt-2 font-semibold text-cyan-300"
+            >¡Sin internet y sin límites!</span
+          >
+        </p>
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+        >
+          <a
+            href="https://wa.me/573187239498?text=Hola,%20me%20gustaría%20obtener%20más%20información%20sobre%20Nodo"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-8 py-4 bg-purple-600 text-white rounded-full font-bold text-lg shadow-lg hover:bg-purple-700 transition-all transform hover:-translate-y-1"
+          >
+            Escríbenos
+          </a>
+          <a
+            href="#features"
+            class="px-8 py-4 bg-white text-nodo-purple rounded-full font-bold text-lg hover:bg-gray-100 transition-all shadow-lg"
+          >
+            Documentación
+          </a>
+        </div>
+        <div
+          class="mt-10 flex items-center justify-center lg:justify-start gap-4 text-sm text-purple-200"
+        >
+          <div class="flex items-center gap-2">
+            <svg
+              class="w-5 h-5 text-green-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"></path></svg
+            >
+            <span>Licencia Anual</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg
+              class="w-5 h-5 text-green-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"></path></svg
+            >
+            <span>Soporte Incluido</span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="relative lg:h-[600px] flex items-center justify-center animate-slide-up"
+      >
+        <div
+          class="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-transparent rounded-full filter blur-3xl opacity-70"
+        >
+        </div>
+        <img
+          src="/images/ventanas_nodo.png"
+          alt="May Osorio - Asistente Virtual Nodo"
+          class="relative z-10 w-full max-w-md lg:max-w-lg object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-500"
+        />
+        <!-- Floating Elements -->
+        <div
+          class="absolute top-20 right-10 bg-white/10 backdrop-blur-md p-4 rounded-2xl shadow-xl z-20 animate-[bounce_3s_infinite] hidden md:block border border-white/20"
+        >
+          <div class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center text-green-300"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg
+              >
+            </div>
+            <div>
+              <p class="text-xs text-purple-200">Estado DIAN</p>
+              <p class="font-bold text-white">Aprobado</p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="absolute bottom-32 left-0 bg-white/10 backdrop-blur-md p-4 rounded-2xl shadow-xl z-20 hidden md:block border border-white/20"
+        >
+          <div class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 bg-cyan-500/20 rounded-full flex items-center justify-center text-cyan-300"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg
+              >
+            </div>
+            <div>
+              <p class="text-xs text-purple-200">Sincronización</p>
+              <p class="font-bold text-white">En tiempo real</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Smooth Wave Shape at Bottom -->
+  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+    <svg
+      class="relative block w-full h-32"
+      viewBox="0 0 1200 120"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M0,60 C300,100 600,20 900,60 C1050,80 1150,40 1200,60 L1200,120 L0,120 Z"
+        fill="#f9fafb"
+        opacity="1"></path>
+    </svg>
+  </div>
+</section>

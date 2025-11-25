@@ -1,0 +1,105 @@
+---
+import {
+    Truck,
+    Hammer,
+    Shirt,
+    Car,
+    UtensilsCrossed,
+    Milk,
+    ShoppingBasket,
+    Footprints,
+    Wheat,
+    Candy,
+    Pill,
+    Beer,
+    Wrench,
+    Book,
+    HardHat,
+    Puzzle,
+    Paperclip,
+    Gem,
+    Watch,
+    Sprout,
+    Smartphone,
+    Cpu,
+    Sparkles,
+    Armchair,
+    Droplets,
+    Glasses,
+    Croissant,
+    PawPrint,
+    Coffee,
+    Store,
+} from "lucide-react";
+
+const businessTypes = [
+    { name: "Distribuidora", icon: Truck },
+    { name: "Ferretería", icon: Hammer },
+    { name: "Boutique", icon: Shirt },
+    { name: "Autoservicio", icon: Car },
+    { name: "Carnicería", icon: UtensilsCrossed }, // Used generic food icon
+    { name: "Cremería", icon: Milk },
+    { name: "Minisuper", icon: ShoppingBasket },
+    { name: "Zapatería", icon: Footprints },
+    { name: "Tortillería", icon: Wheat },
+    { name: "Dulcería", icon: Candy },
+    { name: "Farmacia", icon: Pill },
+    { name: "Cervecería", icon: Beer },
+    { name: "Refaccionaria", icon: Wrench },
+    { name: "Libreria", icon: Book },
+    { name: "Construcción", icon: HardHat },
+    { name: "Juguetería", icon: Puzzle },
+    { name: "Papelería", icon: Paperclip },
+    { name: "Joyería", icon: Gem },
+    { name: "Accesorios", icon: Watch },
+    { name: "Agroquímica", icon: Sprout },
+    { name: "Telefonía", icon: Smartphone },
+    { name: "Tecnología", icon: Cpu },
+    { name: "Limpieza", icon: Sparkles },
+    { name: "Mueblería", icon: Armchair },
+    { name: "Perfumería", icon: Droplets },
+    { name: "Óptica", icon: Glasses },
+    { name: "Panadería", icon: Croissant },
+    { name: "Veterinaria", icon: PawPrint },
+    { name: "Cafetería", icon: Coffee },
+    { name: "Restaurante", icon: UtensilsCrossed },
+    { name: "Y muchos más...", icon: Store },
+];
+---
+
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Ideal para cualquier giro de negocio
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Nodo se adapta a las necesidades específicas de tu industria,
+                ofreciendo estabilidad y potencial de crecimiento.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {
+                businessTypes.map((item) => (
+                    <div class="flex flex-col items-center justify-center p-6 rounded-xl border border-gray-100 hover:border-nodo-purple hover:shadow-lg transition-all group bg-gray-50 hover:bg-white cursor-default">
+                        <div class="text-nodo-purple mb-3 group-hover:scale-110 transition-transform">
+                            <item.icon size={32} stroke-width={1.5} />
+                        </div>
+                        <span class="text-gray-700 font-medium text-center text-sm">
+                            {item.name}
+                        </span>
+                    </div>
+                ))
+            }
+        </div>
+
+        <div class="mt-12 text-center">
+            <p class="text-gray-500 text-sm">
+                * Si tu negocio no aparece en la lista, contáctanos.
+                Garantizamos la funcionalidad de nuestro sistema para tu
+                empresa.
+            </p>
+        </div>
+    </div>
+</section>

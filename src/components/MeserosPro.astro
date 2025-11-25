@@ -1,0 +1,261 @@
+---
+import {
+    Smartphone,
+    Clock,
+    RefreshCw,
+    Bell,
+    Users,
+    ChefHat,
+    CheckCircle2,
+    Zap,
+} from "lucide-react";
+---
+
+<section
+    class="py-20 bg-gradient-to-br from-purple-900 via-purple-800 to-pink-600 text-white relative overflow-hidden"
+>
+    <!-- Background decoration -->
+    <div class="absolute inset-0 opacity-10">
+        <div
+            class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"
+        >
+        </div>
+        <div
+            class="absolute bottom-0 right-0 w-96 h-96 bg-pink-300 rounded-full blur-3xl"
+        >
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <div
+                class="inline-block bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-4"
+            >
+                <span class="text-sm font-semibold">Módulo Especializado</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">MeserosPro2</h2>
+            <p class="text-xl text-purple-100 max-w-3xl mx-auto">
+                La solución móvil perfecta para restaurantes y negocios con
+                servicio a la mesa. Integrada completamente con Nodo para una
+                gestión sin fricciones.
+            </p>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+            <!-- Features List -->
+            <div class="space-y-6">
+                <div class="flex items-start gap-4">
+                    <div
+                        class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center flex-shrink-0"
+                    >
+                        <Smartphone size={24} />
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">
+                            Control de Mesas en Tiempo Real
+                        </h3>
+                        <p class="text-purple-100">
+                            Visualiza todas tus mesas con estados actualizados:
+                            disponibles, ocupadas y tiempo de ocupación. Gestión
+                            intuitiva desde cualquier dispositivo móvil.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                    <div
+                        class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center flex-shrink-0"
+                    >
+                        <RefreshCw size={24} />
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">
+                            Múltiples Pedidos Simultáneos
+                        </h3>
+                        <p class="text-purple-100">
+                            Los meseros pueden atender varias mesas a la vez sin
+                            perder ningún pedido. Cambios de mesa y
+                            modificaciones en tiempo real.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                    <div
+                        class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center flex-shrink-0"
+                    >
+                        <Bell size={24} />
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">
+                            Alertas y Notificaciones
+                        </h3>
+                        <p class="text-purple-100">
+                            Historial completo de pedidos con estados de
+                            preparación. Notificaciones automáticas cuando los
+                            platos están listos.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                    <div
+                        class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center flex-shrink-0"
+                    >
+                        <ChefHat size={24} />
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">
+                            Vista de Cocina Profesional
+                        </h3>
+                        <p class="text-purple-100">
+                            Pantalla dedicada para la cocina con todos los
+                            pedidos organizados por zona de preparación. Control
+                            de estados: pendiente, en preparación y listo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screenshots Showcase -->
+            <div class="relative">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <div
+                            class="bg-white/10 backdrop-blur-sm rounded-2xl p-2 hover:scale-105 transition-transform"
+                        >
+                            <img
+                                src="/images/meserospro-tables.png"
+                                alt="Vista de Mesas"
+                                class="w-full rounded-xl shadow-2xl"
+                            />
+                        </div>
+                        <div
+                            class="bg-white/10 backdrop-blur-sm rounded-2xl p-2 hover:scale-105 transition-transform"
+                        >
+                            <img
+                                src="/images/meserospro-history.png"
+                                alt="Historial de Pedidos"
+                                class="w-full rounded-xl shadow-2xl"
+                            />
+                        </div>
+                    </div>
+                    <div class="space-y-4 pt-8">
+                        <div
+                            class="bg-white/10 backdrop-blur-sm rounded-2xl p-2 hover:scale-105 transition-transform"
+                        >
+                            <img
+                                src="/images/meserospro-order.png"
+                                alt="Toma de Pedido"
+                                class="w-full rounded-xl shadow-2xl"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kitchen View Highlight -->
+        <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 md:p-12">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-3xl font-bold mb-4">
+                        Vista de Cocina Inteligente
+                    </h3>
+                    <p class="text-purple-100 mb-6">
+                        Organiza automáticamente los pedidos por zonas de
+                        preparación. La cocina puede actualizar el estado de
+                        cada platillo en tiempo real, notificando
+                        instantáneamente a los meseros cuando los pedidos están
+                        listos.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center gap-2">
+                            <Clock size={20} className="text-yellow-300" />
+                            <span class="text-sm">Tiempos de espera</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Zap size={20} className="text-green-300" />
+                            <span class="text-sm"
+                                >Actualización instantánea</span
+                            >
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Users size={20} className="text-blue-300" />
+                            <span class="text-sm">Multi-zona</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <CheckCircle2
+                                size={20}
+                                className="text-purple-300"
+                            />
+                            <span class="text-sm">Control de estados</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-2">
+                    <img
+                        src="/images/meserospro-kitchen.png"
+                        alt="Vista de Cocina"
+                        class="w-full rounded-xl shadow-2xl"
+                    />
+                </div>
+            </div>
+        </div>
+
+        <!-- Benefits -->
+        <div class="mt-16 text-center">
+            <h3 class="text-2xl font-bold mb-8">El Plus para tu Negocio</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+                    <div
+                        class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4"
+                    >
+                        <Zap size={32} className="text-green-300" />
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Servicio Más Rápido</h4>
+                    <p class="text-purple-100 text-sm">
+                        Reduce tiempos de espera y mejora la experiencia del
+                        cliente con pedidos instantáneos.
+                    </p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+                    <div
+                        class="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4"
+                    >
+                        <CheckCircle2 size={32} className="text-blue-300" />
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Cero Errores</h4>
+                    <p class="text-purple-100 text-sm">
+                        Elimina confusiones en los pedidos. Todo queda
+                        registrado digitalmente.
+                    </p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+                    <div
+                        class="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4"
+                    >
+                        <Users size={32} className="text-purple-300" />
+                    </div>
+                    <h4 class="font-bold text-lg mb-2">Mayor Productividad</h4>
+                    <p class="text-purple-100 text-sm">
+                        Tus meseros pueden atender más mesas eficientemente sin
+                        perder calidad.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-12 text-center">
+            <a
+                href="#contact"
+                class="inline-block px-8 py-4 bg-white text-purple-900 font-bold rounded-full hover:bg-purple-50 transition-colors shadow-2xl hover:shadow-white/20"
+            >
+                Solicita una Demo de MeserosPro2
+            </a>
+        </div>
+    </div>
+</section>

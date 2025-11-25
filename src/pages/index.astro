@@ -1,0 +1,34 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero.astro";
+import Features from "../components/Features.astro";
+import InteractiveFeatures from "../components/InteractiveFeatures";
+import BusinessTypes from "../components/BusinessTypes.astro";
+import Pricing from "../components/Pricing.astro";
+import MeserosPro from "../components/MeserosPro.astro";
+import Testimonials from "../components/Testimonials";
+import SocialProof from "../components/SocialProof";
+import FAQ from "../components/FAQ";
+import ContactForm from "../components/ContactForm";
+import WhatsAppButton from "../components/WhatsAppButton";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Nodo - Software de Facturación y Gestión Empresarial">
+	<Navbar client:load />
+	<main>
+		<Hero />
+		<Features />
+		<InteractiveFeatures client:load />
+		<BusinessTypes />
+		<Pricing />
+		<MeserosPro />
+		<Testimonials client:load />
+		<SocialProof client:load />
+		<FAQ client:load />
+		<ContactForm client:load />
+	</main>
+	<WhatsAppButton client:load />
+	<Footer />
+</Layout>

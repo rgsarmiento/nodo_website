@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --color-nodo-purple: #9C27B0;
+  --color-nodo-grey: #4A4A4A;
+  --color-nodo-dark: #1a1a1a;
+  --font-sans: 'Outfit', sans-serif;
+  
+  --animate-fade-in: fade-in 0.5s ease-out forwards;
+  --animate-slide-up: slide-up 0.5s ease-out forwards;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@layer base {
+    html {
+        font-family: 'Outfit', sans-serif;
+        scroll-behavior: smooth;
+    }
+    body {
+        @apply bg-slate-50 text-nodo-grey;
+    }
+}
