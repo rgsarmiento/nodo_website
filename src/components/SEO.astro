@@ -2,21 +2,26 @@
 interface Props {
     title?: string;
     description?: string;
+    canonical?: string;
 }
 
 const {
     title = "Nodo - Software de Facturación Electrónica y POS | Colombia",
     description = "Software de facturación electrónica DIAN, punto de venta (POS) e inventarios para Colombia. Solución completa para gestión empresarial. ¡Sin internet y sin límites!",
+    canonical,
 } = Astro.props;
 
 const siteUrl = "https://nodo.devpscol.com";
 const imageUrl = `${siteUrl}/images/nodo.png`;
+const canonicalURL =
+    canonical || new URL(Astro.url.pathname, siteUrl).toString();
 ---
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
 <meta
     name="keywords"
     content="facturación electrónica, software POS, punto de venta, facturación DIAN, software contable Colombia, inventarios, gestión empresarial, facturación sin internet, software restaurantes, MeserosPro, software facturación Colombia, POS Colombia"
@@ -28,7 +33,7 @@ const imageUrl = `${siteUrl}/images/nodo.png`;
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content={siteUrl} />
+<meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={imageUrl} />
@@ -37,7 +42,7 @@ const imageUrl = `${siteUrl}/images/nodo.png`;
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={siteUrl} />
+<meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={imageUrl} />
@@ -104,6 +109,12 @@ const imageUrl = `${siteUrl}/images/nodo.png`;
         "address": {
             "@type": "PostalAddress",
             "addressCountry": "CO"
-        }
+        },
+        "sameAs": [
+            "https://www.facebook.com/share/16sUCbjHVU/?mibextid=wwXIfr",
+            "https://www.instagram.com/nodo_facturacion?igsh=MWozZzVhMnRicTF2dg==",
+            "https://www.tiktok.com/@nodo.facturacion?_r=1&_t=ZS-91gRaDNWXwq",
+            "https://youtube.com/@nodofacturacionposyelectronica?si=VaXdLJ7dKSqR-4eA"
+        ]
     }
 </script>
