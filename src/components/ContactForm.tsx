@@ -1,27 +1,19 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, CheckCircle, AlertCircle } from 'lucide-react';
-
-interface FormData {
-    name: string;
-    phone: string;
-    email: string;
-    message: string;
-}
-
-interface FormStatus {
-    type: 'success' | 'error' | null;
-    message: string;
-}
+import { Phone, Mail, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 export default function ContactForm() {
-    const [formData, setFormData] = useState<FormData>({
+    const [formData, setFormData] = useState({
         name: '',
         phone: '',
         email: '',
         message: ''
     });
 
-    const [status, setStatus] = useState<FormStatus>({ type: null, message: '' });
+    const [status, setStatus] = useState<{
+        type: 'success' | 'error' | null;
+        message: string;
+    }>({ type: null, message: '' });
+
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -56,27 +48,44 @@ export default function ContactForm() {
         setIsSubmitting(true);
         setStatus({ type: null, message: '' });
 
-        // Simular envío (aquí conectarías con tu API)
-        setTimeout(() => {
+        try {
+            const response = await fetch('/api/contact.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                setStatus({
+                    type: 'success',
+                    message: data.message
+                });
+
+                // Limpiar formulario
+                setFormData({
+                    name: '',
+                    phone: '',
+                    email: '',
+                    message: ''
+                });
+            } else {
+                setStatus({
+                    type: 'error',
+                    message: data.message
+                });
+            }
+        } catch (error) {
             setStatus({
-                type: 'success',
-                message: '¡Mensaje enviado exitosamente! Nos pondremos en contacto contigo pronto.'
+                type: 'error',
+                message: 'Error al enviar el mensaje. Por favor intenta nuevamente.'
             });
+        } finally {
             setIsSubmitting(false);
-
-            // Limpiar formulario
-            setFormData({
-                name: '',
-                phone: '',
-                email: '',
-                message: ''
-            });
-
-            // Ocultar mensaje después de 5 segundos
-            setTimeout(() => {
-                setStatus({ type: null, message: '' });
-            }, 5000);
-        }, 1500);
+        }
     };
 
     return (
@@ -84,9 +93,12 @@ export default function ContactForm() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid lg:grid-cols-2 gap-12">
                     <div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Contáctanos</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                            Contáctanos
+                        </h2>
                         <p className="text-xl text-gray-600 mb-8">
-                            ¿Listo para llevar tu negocio al siguiente nivel? Escríbenos y un asesor te contactará en breve.
+                            ¿Listo para llevar tu negocio al siguiente nivel? Escríbenos y un
+                            asesor te contactará en breve.
                         </p>
 
                         <div className="space-y-6">
@@ -95,8 +107,8 @@ export default function ContactForm() {
                                     <Phone size={24} />
                                 </div>
                                 <div>
-                                    <h3 className="font-bold text-gray-900">Teléfono / WhatsApp</h3>
-                                    <p className="text-gray-600">+57 300 123 4567</p>
+                                    <h3 className="font-semibold text-gray-900 mb-1">Teléfono</h3>
+                                    <p className="text-gray-600">+57 318 723 9498</p>
                                 </div>
                             </div>
 
@@ -105,8 +117,8 @@ export default function ContactForm() {
                                     <Mail size={24} />
                                 </div>
                                 <div>
-                                    <h3 className="font-bold text-gray-900">Correo Electrónico</h3>
-                                    <p className="text-gray-600">contacto@nodo.devpscol.com</p>
+                                    <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
+                                    <p className="text-gray-600">nodo@devpscol.com</p>
                                 </div>
                             </div>
 
@@ -115,7 +127,7 @@ export default function ContactForm() {
                                     <MapPin size={24} />
                                 </div>
                                 <div>
-                                    <h3 className="font-bold text-gray-900">Ubicación</h3>
+                                    <h3 className="font-semibold text-gray-900 mb-1">Ubicación</h3>
                                     <p className="text-gray-600">Colombia</p>
                                 </div>
                             </div>
@@ -123,27 +135,11 @@ export default function ContactForm() {
                     </div>
 
                     <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-                        {status.type && (
-                            <div className={`mb-6 p-4 rounded-lg flex items-start gap-3 ${status.type === 'success'
-                                    ? 'bg-green-50 border border-green-200'
-                                    : 'bg-red-50 border border-red-200'
-                                }`}>
-                                {status.type === 'success' ? (
-                                    <CheckCircle className="text-green-600 flex-shrink-0" size={20} />
-                                ) : (
-                                    <AlertCircle className="text-red-600 flex-shrink-0" size={20} />
-                                )}
-                                <p className={status.type === 'success' ? 'text-green-700' : 'text-red-700'}>
-                                    {status.message}
-                                </p>
-                            </div>
-                        )}
-
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div>
                                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                                        Nombre <span className="text-red-500">*</span>
+                                        Nombre *
                                     </label>
                                     <input
                                         type="text"
@@ -157,7 +153,9 @@ export default function ContactForm() {
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
+                                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                                        Teléfono
+                                    </label>
                                     <input
                                         type="tel"
                                         id="phone"
@@ -172,7 +170,7 @@ export default function ContactForm() {
 
                             <div>
                                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                                    Correo Electrónico <span className="text-red-500">*</span>
+                                    Correo Electrónico *
                                 </label>
                                 <input
                                     type="email"
@@ -188,29 +186,50 @@ export default function ContactForm() {
 
                             <div>
                                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                                    Mensaje <span className="text-red-500">*</span>
+                                    Mensaje *
                                 </label>
                                 <textarea
                                     id="message"
                                     name="message"
-                                    rows={4}
                                     value={formData.message}
                                     onChange={handleChange}
+                                    rows={4}
                                     className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-nodo-purple focus:border-transparent outline-none transition-shadow"
                                     placeholder="¿En qué podemos ayudarte?"
                                     required
-                                ></textarea>
+                                />
                             </div>
+
+                            {status.message && (
+                                <div className={`p-4 rounded-lg flex items-start gap-3 ${status.type === 'success'
+                                        ? 'bg-green-50 text-green-800 border border-green-200'
+                                        : 'bg-red-50 text-red-800 border border-red-200'
+                                    }`}>
+                                    {status.type === 'success' ? (
+                                        <CheckCircle size={20} className="mt-0.5 flex-shrink-0" />
+                                    ) : (
+                                        <AlertCircle size={20} className="mt-0.5 flex-shrink-0" />
+                                    )}
+                                    <p className="text-sm">{status.message}</p>
+                                </div>
+                            )}
 
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className={`w-full py-3 px-6 font-bold rounded-lg transition-colors shadow-lg ${isSubmitting
-                                        ? 'bg-gray-400 cursor-not-allowed'
-                                        : 'bg-nodo-purple text-white hover:bg-purple-700 hover:shadow-purple-500/30'
-                                    }`}
+                                className="w-full py-3 px-6 bg-nodo-purple text-white font-bold rounded-lg hover:bg-purple-700 transition-colors shadow-lg hover:shadow-purple-500/30 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                             >
-                                {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
+                                {isSubmitting ? (
+                                    <>
+                                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                        Enviando...
+                                    </>
+                                ) : (
+                                    <>
+                                        <Send size={20} />
+                                        Enviar Mensaje
+                                    </>
+                                )}
                             </button>
                         </form>
                     </div>

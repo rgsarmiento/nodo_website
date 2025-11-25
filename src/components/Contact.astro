@@ -1,29 +1,36 @@
 ---
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin } from "lucide-react";
 ---
 
 <section id="contact" class="py-20 bg-gray-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid lg:grid-cols-2 gap-12">
       <div>
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Contáctanos</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          Contáctanos
+        </h2>
         <p class="text-xl text-gray-600 mb-8">
-          ¿Listo para llevar tu negocio al siguiente nivel? Escríbenos y un asesor te contactará en breve.
+          ¿Listo para llevar tu negocio al siguiente nivel? Escríbenos y un
+          asesor te contactará en breve.
         </p>
-        
+
         <div class="space-y-6">
           <div class="flex items-start gap-4">
-            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-nodo-purple shrink-0">
+            <div
+              class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-nodo-purple shrink-0"
+            >
               <Phone size={24} />
             </div>
             <div>
               <h3 class="font-bold text-gray-900">Teléfono / WhatsApp</h3>
-              <p class="text-gray-600">+57 300 123 4567</p>
+              <p class="text-gray-600">+57 318 723 9498</p>
             </div>
           </div>
-          
+
           <div class="flex items-start gap-4">
-            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-nodo-purple shrink-0">
+            <div
+              class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-nodo-purple shrink-0"
+            >
               <Mail size={24} />
             </div>
             <div>
@@ -31,9 +38,11 @@ import { Phone, Mail, MapPin } from 'lucide-react';
               <p class="text-gray-600">contacto@nodo.devpscol.com</p>
             </div>
           </div>
-          
+
           <div class="flex items-start gap-4">
-            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-nodo-purple shrink-0">
+            <div
+              class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-nodo-purple shrink-0"
+            >
               <MapPin size={24} />
             </div>
             <div>
@@ -43,31 +52,73 @@ import { Phone, Mail, MapPin } from 'lucide-react';
           </div>
         </div>
       </div>
-      
+
       <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
         <form class="space-y-6">
           <div class="grid md:grid-cols-2 gap-6">
             <div>
-              <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
-              <input type="text" id="name" name="name" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-nodo-purple focus:border-transparent outline-none transition-shadow" placeholder="Tu nombre" />
+              <label
+                for="name"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Nombre</label
+              >
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-nodo-purple focus:border-transparent outline-none transition-shadow"
+                placeholder="Tu nombre"
+              />
             </div>
             <div>
-              <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
-              <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-nodo-purple focus:border-transparent outline-none transition-shadow" placeholder="Tu teléfono" />
+              <label
+                for="phone"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Teléfono</label
+              >
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-nodo-purple focus:border-transparent outline-none transition-shadow"
+                placeholder="Tu teléfono"
+              />
             </div>
           </div>
-          
+
           <div>
-            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Correo Electrónico</label>
-            <input type="email" id="email" name="email" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-nodo-purple focus:border-transparent outline-none transition-shadow" placeholder="tu@correo.com" />
+            <label
+              for="email"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Correo Electrónico</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-nodo-purple focus:border-transparent outline-none transition-shadow"
+              placeholder="tu@correo.com"
+            />
           </div>
-          
+
           <div>
-            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Mensaje</label>
-            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-nodo-purple focus:border-transparent outline-none transition-shadow" placeholder="¿En qué podemos ayudarte?"></textarea>
+            <label
+              for="message"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Mensaje</label
+            >
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-nodo-purple focus:border-transparent outline-none transition-shadow"
+              placeholder="¿En qué podemos ayudarte?"></textarea>
           </div>
-          
-          <button type="submit" class="w-full py-3 px-6 bg-nodo-purple text-white font-bold rounded-lg hover:bg-purple-700 transition-colors shadow-lg hover:shadow-purple-500/30">
+
+          <button
+            type="submit"
+            class="w-full py-3 px-6 bg-nodo-purple text-white font-bold rounded-lg hover:bg-purple-700 transition-colors shadow-lg hover:shadow-purple-500/30"
+          >
             Enviar Mensaje
           </button>
         </form>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nodo.com.co/sitemap.xml
+Sitemap: https://nodo.devpscol.com/sitemap.xml
