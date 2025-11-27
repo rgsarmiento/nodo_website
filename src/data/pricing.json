@@ -1,0 +1,73 @@
+{
+    "offer": {
+        "active": true,
+        "percentage": 30,
+        "startDate": "2024-12-01",
+        "endDate": "2025-12-15",
+        "badge": "30% OFF",
+        "promo": {
+            "title": "HASTA EL 15 DIC",
+            "discount": "30% OFF",
+            "subtitle": "EN FOLIOS & LICENCIA",
+            "buttonText": "QUIERO MI DESCUENTO",
+            "buttonLink": "#pricing",
+            "backgroundImage": "/nodo_promo_woman_crazy.png"
+        }
+    },
+    "plans": {
+        "annual": {
+            "name": "Licencia Anual",
+            "description": "Para pequeños y medianos negocios",
+            "basePrice": 1300000,
+            "highlight": "✨ Facturación POS Ilimitada por 1 año",
+            "features": [
+                "Facturación Pos Ilimitada",
+                "Inventario y POS completo",
+                "Soporte y Actualizaciones",
+                "Funciona Offline"
+            ]
+        },
+        "equipment": {
+            "name": "Licencia + Equipos",
+            "description": "Solución llave en mano",
+            "priceType": "quote",
+            "popular": true,
+            "features": [
+                "Todo lo del plan Anual",
+                "Incluye Computador/POS",
+                "Impresora Térmica",
+                "Lector de Códigos",
+                "Cajón Monedero"
+            ]
+        }
+    },
+    "folios": [
+        {
+            "quantity": 1000,
+            "basePrice": 250000
+        },
+        {
+            "quantity": 5000,
+            "basePrice": 400000
+        },
+        {
+            "quantity": 10000,
+            "basePrice": 600000
+        },
+        {
+            "quantity": 50000,
+            "basePrice": 1500000
+        },
+        {
+            "quantity": 100000,
+            "basePrice": 2000000
+        },
+        {
+            "quantity": "unlimited",
+            "label": "Ilimitado",
+            "duration": "Por 1 año",
+            "basePrice": 2800000,
+            "highlight": true
+        }
+    ]
+}

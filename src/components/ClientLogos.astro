@@ -1,21 +1,5 @@
 ---
-import fs from "node:fs";
-import path from "node:path";
 import ClientLogosList from "./ClientLogosList";
-
-const clientsDir = path.join(process.cwd(), "public", "clients");
-let logos = [];
-
-try {
-    if (fs.existsSync(clientsDir)) {
-        logos = fs
-            .readdirSync(clientsDir)
-            .filter((file) => /\.(png|jpg|jpeg|svg|webp)$/i.test(file))
-            .map((file) => `/clients/${file}`);
-    }
-} catch (e) {
-    console.error("Error reading clients directory:", e);
-}
 ---
 
 <section class="py-16 bg-white">
@@ -29,6 +13,6 @@ try {
             </p>
         </div>
 
-        <ClientLogosList client:visible logos={logos} />
+        <ClientLogosList client:visible />
     </div>
 </section>

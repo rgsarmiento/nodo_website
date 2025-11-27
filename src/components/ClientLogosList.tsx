@@ -2,22 +2,39 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface ClientLogosListProps {
-    logos: string[];
+    apiEndpoint?: string;
 }
 
-export default function ClientLogosList({ logos }: ClientLogosListProps) {
+export default function ClientLogosList({ apiEndpoint = '/api/client-logos.json' }: ClientLogosListProps) {
     const ITEMS_PER_PAGE = 8;
+    const [logos, setLogos] = useState<string[]>([]);
     const [activeIndices, setActiveIndices] = useState<number[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    // Fetch logos from API
+    useEffect(() => {
+        const fetchLogos = async () => {
+            try {
+                const response = await fetch(apiEndpoint);
+                const data = await response.json();
+                setLogos(data);
+
+                // Initialize with first 8 logos
+                const initialIndices = data.slice(0, ITEMS_PER_PAGE).map((_: any, i: number) => i);
+                setActiveIndices(initialIndices);
+            } catch (error) {
+                console.error('Error fetching client logos:', error);
+                setLogos([]);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchLogos();
+    }, [apiEndpoint]);
 
     useEffect(() => {
-        // Initial setup: Take the first 8 unique logos
-        // If fewer than 8, just take all of them
-        const initialIndices = logos.slice(0, ITEMS_PER_PAGE).map((_, i) => i);
-        setActiveIndices(initialIndices);
-    }, [logos]);
-
-    useEffect(() => {
-        // If we don't have enough logos to rotate (need at least ITEMS_PER_PAGE + 1), do nothing
+        // If we don't have enough logos to rotate, do nothing
         if (logos.length <= ITEMS_PER_PAGE) return;
 
         const interval = setInterval(() => {
@@ -26,18 +43,16 @@ export default function ClientLogosList({ logos }: ClientLogosListProps) {
                 const allIndices = logos.map((_, i) => i);
                 const availableIndices = allIndices.filter(i => !currentIndices.includes(i));
 
-                // If no available logos to swap in, return current (shouldn't happen due to check above)
+                // If no available logos to swap in, return current
                 if (availableIndices.length === 0) return currentIndices;
 
-                // 2. Determine how many to swap
-                // We want to swap 3, but we can't swap more than we have available
+                // 2. Determine how many to swap (up to 3)
                 const countToSwap = Math.min(3, availableIndices.length);
 
                 // 3. Pick random slots to remove from the current view
-                // We shuffle the current indices and pick the first 'countToSwap'
                 const slotsToReplace = [...currentIndices]
-                    .map((_, index) => index) // get slot indices 0..7
-                    .sort(() => 0.5 - Math.random()) // shuffle
+                    .map((_, index) => index)
+                    .sort(() => 0.5 - Math.random())
                     .slice(0, countToSwap);
 
                 // 4. Pick random new logos from available
@@ -58,6 +73,14 @@ export default function ClientLogosList({ logos }: ClientLogosListProps) {
         return () => clearInterval(interval);
     }, [logos]);
 
+    if (loading) {
+        return (
+            <div className="text-center py-12">
+                <p className="text-gray-500">Cargando logos...</p>
+            </div>
+        );
+    }
+
     if (logos.length === 0) {
         return (
             <div className="text-center py-12 bg-gray-50 rounded-2xl border-2 border-dashed border-gray-200">
@@ -72,8 +95,6 @@ export default function ClientLogosList({ logos }: ClientLogosListProps) {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center min-h-[200px]">
             {activeIndices.map((logoIndex, slotIndex) => {
                 const logoSrc = logos[logoIndex];
-                // Key must be unique to the logo content to trigger animation on change
-                // We use slotIndex + logoIndex to ensure it's unique per slot but changes when logo changes
                 const key = `slot-${slotIndex}-${logoIndex}`;
 
                 return (
@@ -91,7 +112,7 @@ export default function ClientLogosList({ logos }: ClientLogosListProps) {
                                 exit={{
                                     opacity: 0,
                                     scale: 1.1,
-                                    filter: 'grayscale(0%)', // Flash color on exit
+                                    filter: 'grayscale(0%)',
                                     transition: { duration: 0.8, ease: "easeInOut" }
                                 }}
                                 whileHover={{
