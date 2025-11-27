@@ -3,18 +3,31 @@ interface Props {
     title?: string;
     description?: string;
     canonical?: string;
+    type?: "website" | "article" | "product";
+    image?: string;
+    noindex?: boolean;
+    publishedTime?: string;
+    modifiedTime?: string;
 }
 
 const {
-    title = "Nodo - Software de Facturación Electrónica y POS | Colombia",
-    description = "Software de facturación electrónica DIAN, punto de venta (POS) e inventarios para Colombia. Solución completa para gestión empresarial. ¡Sin internet y sin límites!",
+    title = "Nodo - Software de Facturación Electrónica DIAN y POS | Colombia",
+    description = "Software de facturación electrónica DIAN, punto de venta (POS) e inventarios para Colombia. Solución completa para tu negocio. ¡Funciona sin internet y sin límites!",
     canonical,
+    type = "website",
+    image,
+    noindex = false,
+    publishedTime,
+    modifiedTime,
 } = Astro.props;
 
 const siteUrl = "https://nodo.devpscol.com";
-const imageUrl = `${siteUrl}/images/nodo.png`;
+const imageUrl = image || `${siteUrl}/images/nodo.png`;
 const canonicalURL =
     canonical || new URL(Astro.url.pathname, siteUrl).toString();
+
+// Obtener la fecha actual para lastmod del sitemap
+const currentDate = new Date().toISOString();
 ---
 
 <!-- Primary Meta Tags -->
@@ -22,100 +35,221 @@ const canonicalURL =
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL} />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta
     name="keywords"
-    content="facturación electrónica, software POS, punto de venta, facturación DIAN, software contable Colombia, inventarios, gestión empresarial, facturación sin internet, software restaurantes, MeserosPro, software facturación Colombia, POS Colombia"
+    content="facturación electrónica Colombia, software POS Colombia, punto de venta, facturación DIAN, software contable, inventarios, gestión empresarial, facturación sin internet, software restaurantes Colombia, facturación electrónica gratuita, sistema POS, software pymes Colombia"
 />
 <meta name="author" content="Desarrolladores Colombia SAS" />
-<meta name="robots" content="index, follow" />
-<meta name="language" content="Spanish" />
-<meta name="revisit-after" content="7 days" />
+<meta
+    name="robots"
+    content={noindex
+        ? "noindex, nofollow"
+        : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
+/>
+<meta name="language" content="es-CO" />
+<meta name="geo.region" content="CO" />
+<meta name="geo.placename" content="Colombia" />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
+<meta property="og:type" content={type} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={imageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={title} />
 <meta property="og:site_name" content="Nodo" />
 <meta property="og:locale" content="es_CO" />
+{
+    publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+    )
+}
+{
+    modifiedTime && (
+        <meta property="article:modified_time" content={modifiedTime} />
+    )
+}
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={canonicalURL} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={imageUrl} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+<meta name="twitter:image:alt" content={title} />
 
 <!-- Favicon -->
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-<link rel="icon" type="image/png" href="/favicon.png" />
-<link rel="apple-touch-icon" href="/favicon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<!-- Preconnect para mejorar velocidad -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
 <!-- Structured Data (JSON-LD) for Software -->
-<script type="application/ld+json">
-    {
+<script
+    type="application/ld+json"
+    set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "Nodo",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Windows",
-        "offers": {
+        name: "Nodo",
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Windows, Web",
+        offers: {
             "@type": "Offer",
-            "price": "1000000",
-            "priceCurrency": "COP"
+            price: "500000",
+            priceCurrency: "COP",
+            priceValidUntil: "2025-12-31",
+            availability: "https://schema.org/InStock",
+            url: "https://nodo.devpscol.com",
         },
-        "aggregateRating": {
+        aggregateRating: {
             "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "ratingCount": "150"
+            ratingValue: "4.8",
+            ratingCount: "150",
+            bestRating: "5",
+            worstRating: "1",
         },
-        "description": "Software de facturación electrónica DIAN, punto de venta (POS) e inventarios para Colombia",
-        "image": "https://nodo.devpscol.com/images/nodo.png",
-        "url": "https://nodo.devpscol.com",
-        "provider": {
+        description:
+            "Software de facturación electrónica DIAN, punto de venta (POS) e inventarios para Colombia. Solución completa para gestión empresarial.",
+        image: "https://nodo.devpscol.com/images/nodo.png",
+        url: "https://nodo.devpscol.com",
+        downloadUrl: "https://nodo.devpscol.com",
+        softwareVersion: "3.0",
+        datePublished: "2020-01-01",
+        dateModified: currentDate,
+        provider: {
             "@type": "Organization",
-            "name": "Desarrolladores Colombia SAS",
-            "url": "https://nodo.devpscol.com",
-            "logo": "https://nodo.devpscol.com/images/nodo.png",
-            "contactPoint": {
+            name: "Desarrolladores Colombia SAS",
+            url: "https://nodo.devpscol.com",
+            logo: {
+                "@type": "ImageObject",
+                url: "https://nodo.devpscol.com/images/nodo.png",
+                width: 250,
+                height: 60,
+            },
+            contactPoint: {
                 "@type": "ContactPoint",
-                "telephone": "+57-318-7239498",
-                "contactType": "Sales",
-                "areaServed": "CO",
-                "availableLanguage": "Spanish"
-            }
+                telephone: "+57-318-7239498",
+                contactType: "Sales",
+                areaServed: "CO",
+                availableLanguage: ["Spanish", "es"],
+            },
+            sameAs: [
+                "https://www.facebook.com/share/16sUCbjHVU/?mibextid=wwXIfr",
+                "https://www.instagram.com/nodo_facturacion?igsh=MWozZzVhMnRicTF2dg==",
+                "https://www.tiktok.com/@nodo.facturacion?_r=1&_t=ZS-91gRaDNWXwq",
+                "https://youtube.com/@nodofacturacionposyelectronica?si=VaXdLJ7dKSqR-4eA",
+            ],
         },
-        "featureList": [
+        featureList: [
             "Facturación Electrónica DIAN",
             "Punto de Venta (POS)",
             "Gestión de Inventarios",
+            "Gestión de Clientes",
+            "Gestión de Proveedores",
+            "Gestión de Productos",
+            "Gestión de Almacenes",
+            "Comandas Restaurantes",
+            "Gestión de Pedidos Online Distribuidores",
             "Módulos Administrativos",
             "Funciona sin Internet",
-            "Soporte Técnico Incluido"
-        ]
-    }
-</script>
+            "Soporte Técnico Incluido",
+            "Reportes en Tiempo Real",
+            "Multi-usuario",
+            "Control de Caja",
+            "Integración con Bancos",
+        ],
+        applicationSubCategory: "Accounting Software",
+        countriesSupported: "CO",
+    })}
+/>
 
 <!-- Local Business Schema -->
-<script type="application/ld+json">
-    {
+<script
+    type="application/ld+json"
+    set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
-        "name": "Nodo - Software de Facturación",
-        "image": "https://nodo.devpscol.com/images/nodo.png",
-        "url": "https://nodo.devpscol.com",
-        "telephone": "+57-318-7239498",
-        "priceRange": "$500000 $1000000",
-        "address": {
+        name: "Nodo - Software de Facturación Electrónica",
+        image: "https://nodo.devpscol.com/images/nodo.png",
+        url: "https://nodo.devpscol.com",
+        telephone: "+57-318-7239498",
+        priceRange: "$$",
+        address: {
             "@type": "PostalAddress",
-            "addressCountry": "CO"
+            addressCountry: "CO",
+            addressLocality: "Colombia",
         },
-        "sameAs": [
+        geo: {
+            "@type": "GeoCoordinates",
+            latitude: "4.570868",
+            longitude: "-74.297333",
+        },
+        openingHoursSpecification: {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            opens: "08:00",
+            closes: "18:00",
+        },
+        sameAs: [
             "https://www.facebook.com/share/16sUCbjHVU/?mibextid=wwXIfr",
             "https://www.instagram.com/nodo_facturacion?igsh=MWozZzVhMnRicTF2dg==",
             "https://www.tiktok.com/@nodo.facturacion?_r=1&_t=ZS-91gRaDNWXwq",
-            "https://youtube.com/@nodofacturacionposyelectronica?si=VaXdLJ7dKSqR-4eA"
-        ]
-    }
-</script>
+            "https://youtube.com/@nodofacturacionposyelectronica?si=VaXdLJ7dKSqR-4eA",
+        ],
+    })}
+/>
+
+<!-- Breadcrumb Schema (si aplica) -->
+{
+    Astro.url.pathname !== "/" && (
+        <script
+            type="application/ld+json"
+            set:html={JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                    {
+                        "@type": "ListItem",
+                        position: 1,
+                        name: "Inicio",
+                        item: "https://nodo.devpscol.com",
+                    },
+                    {
+                        "@type": "ListItem",
+                        position: 2,
+                        name: title,
+                        item: canonicalURL,
+                    },
+                ],
+            })}
+        />
+    )
+}
+
+<!-- WebSite Schema para búsqueda -->
+<script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "Nodo",
+        url: "https://nodo.devpscol.com",
+        potentialAction: {
+            "@type": "SearchAction",
+            target: {
+                "@type": "EntryPoint",
+                urlTemplate:
+                    "https://nodo.devpscol.com/buscar?q={search_term_string}",
+            },
+            "query-input": "required name=search_term_string",
+        },
+    })}
+/>
